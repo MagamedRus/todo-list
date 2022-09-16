@@ -1,7 +1,7 @@
 import React from 'react';
 import { SafeAreaView, StatusBar } from 'react-native';
-import Header from './src/components/Header';
-import Todo from './src/components/Todo';
+import Header from './components/Header';
+import Todo from './components/Todo';
 // import { useAppSelector } from './src/hooks/redux';
 
 const todo = {
