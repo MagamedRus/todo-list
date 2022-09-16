@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { BackgroundColor, TextColor } from '../constants/colors';
+import { useAppDispatch } from '../hooks/redux';
+import { addTodo } from '../store/reducers/todosSlice';
 import Input from './Input';
 import ModalButton from './ModalButton';
 import Popup from './Popup';
@@ -13,8 +15,9 @@ type Props = {
 const ModalAddTask = ({ close, isShow }: Props) => {
   const [title, setTitle] = useState('');
   const [task, setTask] = useState('');
+  const dispatch = useAppDispatch();
 
-  const addTask = () => console.log(title, task);
+  const addTask = () => title && task && dispatch(addTodo({ task, title }));
 
   return (
     <Popup close={close} isShow={isShow}>
