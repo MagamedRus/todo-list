@@ -4,6 +4,8 @@ import FilterRow from './FilterRow';
 import Popup from './Popup';
 import { FilterType } from '../types/filter';
 import { filterStates } from '../constants/filterState';
+import { useAppSelector, useAppDispatch } from '../hooks/redux';
+import { changeFilter } from '../store/reducers/filterSlice';
 
 type Props = {
   isShow: boolean;
@@ -11,9 +13,11 @@ type Props = {
 };
 
 const ModalFilter = ({ isShow, close }: Props) => {
-  const setFilter = (filterType: FilterType) => {
-    console.log(filterType);
-  };
+  const filterState = useAppSelector(state => state.filter);
+  const dispatch = useAppDispatch();
+
+  const setFilter = (filterType: FilterType) =>
+    dispatch(changeFilter(filterType));
   const setCurrFilter = (filter: FilterType) => () => setFilter(filter);
 
   return (
@@ -22,17 +26,17 @@ const ModalFilter = ({ isShow, close }: Props) => {
         <FilterRow
           onPress={setCurrFilter(filterStates.SHOW_ALL)}
           innerText={filterStates.SHOW_ALL.title}
-          isChoosed={false}
+          isChoosed={filterState.id === filterStates.SHOW_ALL.id}
         />
         <FilterRow
           onPress={setCurrFilter(filterStates.SHOW_COMPLETED)}
           innerText={filterStates.SHOW_COMPLETED.title}
-          isChoosed={true}
+          isChoosed={filterState.id === filterStates.SHOW_COMPLETED.id}
         />
         <FilterRow
           onPress={setCurrFilter(filterStates.SHOW_UNCOMPLETED)}
           innerText={filterStates.SHOW_UNCOMPLETED.title}
-          isChoosed={false}
+          isChoosed={filterState.id === filterStates.SHOW_UNCOMPLETED.id}
         />
       </View>
     </Popup>
