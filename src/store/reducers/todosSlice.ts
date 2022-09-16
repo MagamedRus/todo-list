@@ -8,14 +8,7 @@ interface TodosStore {
   data: TodosType;
 }
 
-const todos: TodosType = [
-  {
-    id: 0,
-    title: 'Математика',
-    task: 'Подготовить клей, ножницы, вл. салфетки, цветную бумагу, ножницы, шерстняые нитки',
-    isComplete: true,
-  },
-];
+const todos: TodosType = [];
 
 type newTodoPayload = {
   title: string;
@@ -38,7 +31,7 @@ const todosSlice = createSlice({
     addTodo(state, action: PayloadAction<newTodoPayload>) {
       const { data } = state;
       const lastItemData = data[state.data.length - 1];
-      const lastItemId = lastItemData.id || -1;
+      const lastItemId = lastItemData?.id || -1;
       const id = lastItemId + 1;
       const newTodo: TodoType = {
         id: id,
