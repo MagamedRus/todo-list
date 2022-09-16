@@ -2,7 +2,7 @@ export type TodoType = {
   id: number;
   title: string;
   task: string;
-  complete: boolean;
+  isComplete: boolean;
 };
 
 export type TodosType = Array<TodoType>;
