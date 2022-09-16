@@ -1,4 +1,5 @@
 import React from 'react';
+import { View } from 'react-native';
 import { useAppSelector } from '../hooks/redux';
 import HR from './HR';
 import Todo from './Todo';
@@ -9,10 +10,10 @@ function Todos() {
   return (
     <>
       {todos.map((todo, index) => (
-        <>
+        <View key={String(todo.id)}>
           {index !== 0 && <HR />}
-          <Todo key={String(todo.id)} todo={todo} />
-        </>
+          <Todo todo={todo} />
+        </View>
       ))}
     </>
   );
