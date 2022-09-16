@@ -8,9 +8,13 @@ const filterSlice = createSlice({
   reducers: {
     changeFilter(state, action: PayloadAction<FilterType>) {
       state = action.payload;
+      return state;
+    },
+    logFilterState(state) {
+      console.log(state);
     },
   },
 });
 
-export const { changeFilter } = filterSlice.actions;
+export const { changeFilter, logFilterState } = filterSlice.actions;
 export default filterSlice.reducer;
