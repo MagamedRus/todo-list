@@ -33,10 +33,10 @@ function Todo({ todo }: Props) {
         !isShow && setIsShow(true);
         break;
       case filterStates.SHOW_COMPLETED.id:
-        !todo.isComplete && isShow && setIsShow(false);
+        setIsShow(todo.isComplete);
         break;
       case filterStates.SHOW_UNCOMPLETED.id:
-        todo.isComplete && isShow && setIsShow(false);
+        setIsShow(!todo.isComplete);
         break;
       default:
         break;
