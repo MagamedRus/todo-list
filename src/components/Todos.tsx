@@ -1,13 +1,11 @@
 import React from 'react';
-import { TodosType } from '../types/todo';
+import { useAppSelector } from '../hooks/redux';
 import HR from './HR';
 import Todo from './Todo';
 
-type Props = {
-  todos: TodosType;
-};
+function Todos() {
+  const todos = useAppSelector(state => state.todos);
 
-function Todos({ todos }: Props) {
   return (
     <>
       {todos.map((todo, index) => (
