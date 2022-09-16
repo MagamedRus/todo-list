@@ -57,7 +57,6 @@ const styles = StyleSheet.create({
   },
 
   header: {
-    width: '100%',
     marginTop: 18,
     marginHorizontal: 16,
   },
