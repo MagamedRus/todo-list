@@ -5,7 +5,7 @@ import Popup from './Popup';
 import { FilterType } from '../types/filter';
 import { filterStates } from '../constants/filterState';
 import { useAppDispatch } from '../hooks/redux';
-import { changeFilter } from '../store/reducers/filterSlice';
+import { changeFilter } from '../store/reducers/todosSlice';
 
 type Props = {
   isShow: boolean;
