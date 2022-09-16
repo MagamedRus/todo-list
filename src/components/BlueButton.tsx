@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    width: '100%',
+    marginHorizontal: 16,
     height: 55,
     backgroundColor: BackgroundColor.skyBlue,
     borderRadius: 8,
@@ -32,6 +32,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 24,
     textAlign: 'center',
-    color: TextColor.skyBlue,
+    color: TextColor.white,
   },
 });
