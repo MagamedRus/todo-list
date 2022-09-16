@@ -25,8 +25,8 @@ const ModalAddTask = ({ close, isShow }: Props) => {
         </View>
 
         <View style={styles.inputsContainer}>
-          <Input setValue={setTitle} />
-          <Input setValue={setTask} />
+          <Input placeholder={'Заголовок'} setValue={setTitle} />
+          <Input placeholder={'Задание'} setValue={setTask} />
         </View>
 
         <View style={styles.buttonsContainer}>
@@ -36,7 +36,7 @@ const ModalAddTask = ({ close, isShow }: Props) => {
             style={styles.rightWhiteBorder}
             isLightText={true}
           />
-          <ModalButton innerText="Отмена" onPress={addTask} />
+          <ModalButton innerText="Сохранить" onPress={addTask} />
         </View>
       </View>
     </Popup>
