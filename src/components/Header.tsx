@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
+import { useAppSelector } from '../hooks/redux';
 import HR from './HR';
 import ModalFilter from './ModalFilter';
 import TransparentBlueButton from './TransparentBlueButton';
@@ -7,17 +8,22 @@ import TransparentBlueButton from './TransparentBlueButton';
 const Header = () => {
   const [showModal, setShowModal] = useState(false);
   const reverseShowModal = () => setShowModal(prevState => !prevState);
+  const filterState = useAppSelector(state => state.filter);
 
   return (
     <View style={styles.container}>
       <View style={styles.buttonContainer}>
         <TransparentBlueButton
           onPress={reverseShowModal}
-          innerText={'Показывать все задания'}
+          innerText={filterState.title}
         />
       </View>
       <HR />
-      <ModalFilter isShow={showModal} close={reverseShowModal} />
+      <ModalFilter
+        isShow={showModal}
+        filterState={filterState}
+        close={reverseShowModal}
+      />
     </View>
   );
 };
