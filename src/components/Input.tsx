@@ -46,6 +46,7 @@ const styles = StyleSheet.create({
     borderRadius: 7,
     paddingHorizontal: 6,
     paddingVertical: 7,
+    borderWidth: 1,
 
     fontFamily: 'Inter',
     fontStyle: 'normal',
