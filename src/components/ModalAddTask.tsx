@@ -25,8 +25,8 @@ const ModalAddTask = ({ close, isShow }: Props) => {
         </View>
 
         <View style={styles.inputsContainer}>
-          <Input setValue={setTitle} value={title} />
-          <Input setValue={setTask} value={task} />
+          <Input setValue={setTitle} />
+          <Input setValue={setTask} />
         </View>
 
         <View style={styles.buttonsContainer}>

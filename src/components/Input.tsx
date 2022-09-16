@@ -7,14 +7,13 @@ import type {
 import { BackgroundColor, TextColor } from '../constants/colors';
 
 type Props = {
-  value: string;
   setValue: { (value: string): void };
   placeholder?: string;
 };
 
 type InputChangeEvent = NativeSyntheticEvent<TextInputChangeEventData>;
 
-const Input = ({ value, setValue, placeholder }: Props) => {
+const Input = ({ setValue, placeholder }: Props) => {
   let delayTimer: number;
 
   const onChange = (ev: InputChangeEvent) => {
@@ -28,7 +27,6 @@ const Input = ({ value, setValue, placeholder }: Props) => {
     <TextInput
       style={styles.container}
       onChange={onChange}
-      value={value}
       placeholder={placeholder || ''}
       placeholderTextColor={TextColor.lightPlaceholder}
       selectionColor={BackgroundColor.lightSystemBlue}
