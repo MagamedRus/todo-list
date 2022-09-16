@@ -42,8 +42,16 @@ const todosSlice = createSlice({
       });
       return state;
     },
+    togleTodoComplete(state, action: PayloadAction<number>) {
+      state = state.map(todo =>
+        todo.id === action.payload
+          ? { ...todo, isComplete: !todo.isComplete }
+          : todo,
+      );
+    },
   },
 });
 
-export const { setTodos, addTodo, deleteTodo, filterTodo } = todosSlice.actions;
+export const { setTodos, addTodo, deleteTodo, filterTodo, togleTodoComplete } =
+  todosSlice.actions;
 export default todosSlice.reducer;
