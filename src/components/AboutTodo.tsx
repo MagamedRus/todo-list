@@ -11,13 +11,12 @@ const AboutTodo = ({ task, title, isComplete }: Props) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{title}</Text>
-      <Text style={isComplete ? styles.completedTask : styles.task}>{task}</Text>
+      <Text style={isComplete ? styles.completedTask : styles.task}>
+        {task}
+      </Text>
     </View>
   );
-}
-
-
-
+};
 
 export default AboutTodo;
 
@@ -35,7 +34,7 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     fontSize: 17,
     lineHeight: 26,
-    color: '#3B3B3B'
+    color: '#3B3B3B',
   },
   task: {
     fontFamily: 'Inter',
@@ -54,5 +53,4 @@ const styles = StyleSheet.create({
     color: '#6F767E',
     textDecorationLine: 'line-through',
   },
-
-})
+});

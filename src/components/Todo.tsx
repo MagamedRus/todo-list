@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { TodoType } from '../types/todo';
 import AboutTodo from './AboutTodo';
 import DeleteButton from './DeleteButton';
 import ReadButton from './ReadButton';
 import { deleteTodo, updateTodo } from '../common/localStorage';
+import { useAppSelector } from '../hooks/redux';
+import { filterStates } from '../constants/filterState';
 
 type Props = {
   todo: TodoType;
@@ -13,6 +15,7 @@ type Props = {
 function Todo({ todo }: Props) {
   const [isComplete, setIsComplite] = useState(todo.isComplete);
   const [isShow, setIsShow] = useState(true);
+  const filterState = useAppSelector(state => state.filter);
 
   const onPressDelete = () => {
     deleteTodo(todo.id);
@@ -23,6 +26,22 @@ function Todo({ todo }: Props) {
     updateTodo({ ...todo, isComplete: !todo.isComplete });
     setIsComplite(prevState => !prevState);
   };
+
+  useEffect(() => {
+    switch (filterState.id) {
+      case filterStates.SHOW_ALL.id:
+        !isShow && setIsShow(true);
+        break;
+      case filterStates.SHOW_COMPLETED.id:
+        !todo.isComplete && isShow && setIsShow(false);
+        break;
+      case filterStates.SHOW_UNCOMPLETED.id:
+        todo.isComplete && isShow && setIsShow(false);
+        break;
+      default:
+        break;
+    }
+  }, [filterState, isShow, todo.isComplete]);
 
   return (
     <View style={[isShow ? styles.container : styles.hide]}>
