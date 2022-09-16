@@ -1,5 +1,11 @@
 import React, { useEffect } from 'react';
-import { Modal, StatusBar, StyleSheet, TouchableOpacity } from 'react-native';
+import {
+  Modal,
+  StatusBar,
+  StyleSheet,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+} from 'react-native';
 import { BackgroundColor } from '../constants/colors';
 
 type Props = {
@@ -20,10 +26,12 @@ const Popup = ({ close, children, isShow }: Props) => {
       visible={isShow}
       animationType="fade"
       transparent={true}
-      onTouchCancel={close}
       onRequestClose={close}>
-      <TouchableOpacity onPress={close} style={styles.container}>
-        {children}
+      <TouchableOpacity
+        activeOpacity={1}
+        onPressOut={close}
+        style={styles.container}>
+        <TouchableWithoutFeedback>{children}</TouchableWithoutFeedback>
       </TouchableOpacity>
     </Modal>
   );
@@ -37,5 +45,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: BackgroundColor.modalShadow,
+    opacity: 1,
   },
 });
