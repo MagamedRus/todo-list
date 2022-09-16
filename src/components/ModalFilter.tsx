@@ -6,6 +6,7 @@ import { FilterType } from '../types/filter';
 import { filterStates } from '../constants/filterState';
 import { useAppDispatch } from '../hooks/redux';
 import { changeFilter } from '../store/reducers/filterSlice';
+import { BackgroundColor } from '../constants/colors';
 
 type Props = {
   isShow: boolean;
@@ -51,7 +52,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     height: 167,
     width: 359,
-    backgroundColor: 'rgba(249, 249, 249, 0.94)',
+    backgroundColor: BackgroundColor.lightBackground,
     borderRadius: 14,
   },
 });

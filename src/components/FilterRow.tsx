@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { BackgroundColor, TextColor } from '../constants/colors';
 
 type Props = {
   onPress: { (): void };
@@ -24,16 +25,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     height: 55,
-    backgroundColor: '',
+    backgroundColor: BackgroundColor.white,
   },
   innerText: {
     fontFamily: 'Inter',
     fontStyle: 'normal',
     lineHeight: 18,
     fontSize: 16,
-    color: '#737A82',
+    color: TextColor.semiGray,
   },
   choosedInnerText: {
-    color: '#3785CC',
+    color: TextColor.skyBlue,
   },
 });

@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { TextColor } from '../constants/colors';
 
 type Props = {
   title: string;
@@ -34,7 +35,7 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     fontSize: 17,
     lineHeight: 26,
-    color: '#3B3B3B',
+    color: TextColor.darkBrown,
   },
   task: {
     fontFamily: 'Inter',
@@ -42,7 +43,7 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     fontSize: 13,
     lineHeight: 17,
-    color: '#3B3B3B;',
+    color: TextColor.darkBrown,
   },
   completedTask: {
     fontFamily: 'Inter',
@@ -50,7 +51,7 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     fontSize: 13,
     lineHeight: 17,
-    color: '#6F767E',
+    color: TextColor.semiDarkGray,
     textDecorationLine: 'line-through',
   },
 });

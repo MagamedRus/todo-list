@@ -2,6 +2,7 @@ import React from 'react';
 import { SafeAreaView, StatusBar } from 'react-native';
 import Header from './components/Header';
 import Todo from './components/Todo';
+import { BackgroundColor } from './constants/colors';
 // import { useAppSelector } from './src/hooks/redux';
 
 const todo = {
@@ -15,12 +16,10 @@ const App = () => {
   return (
     <SafeAreaView>
       <Header />
-      <StatusBar backgroundColor={'transparent'} />
+      <StatusBar backgroundColor={BackgroundColor.transparent} />
       <Todo todo={todo} />
     </SafeAreaView>
   );
 };
-
-// const styles = StyleSheet.create({});
 
 export default App;
