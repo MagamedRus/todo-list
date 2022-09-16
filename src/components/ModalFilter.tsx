@@ -4,20 +4,19 @@ import FilterRow from './FilterRow';
 import Popup from './Popup';
 import { FilterType } from '../types/filter';
 import { filterStates } from '../constants/filterState';
-import { useAppSelector, useAppDispatch } from '../hooks/redux';
+import { useAppDispatch } from '../hooks/redux';
 import { changeFilter } from '../store/reducers/filterSlice';
 
 type Props = {
   isShow: boolean;
+  filterState: FilterType;
   close: { (): void };
 };
 
-const ModalFilter = ({ isShow, close }: Props) => {
-  const filterState = useAppSelector(state => state.filter);
+const ModalFilter = ({ isShow, close, filterState }: Props) => {
   const dispatch = useAppDispatch();
-
   const setFilter = (filterType: FilterType) =>
-    dispatch(changeFilter(filterType));
+    dispatch(changeFilter(filterType)) && close();
   const setCurrFilter = (filter: FilterType) => () => setFilter(filter);
 
   return (
