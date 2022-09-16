@@ -34,8 +34,6 @@ const styles = StyleSheet.create({
     fontFamily: 'Inter',
     fontStyle: 'normal',
     textAlign: 'center',
-    width: 134,
-    height: 44,
     fontSize: 17,
     lineHeight: 22,
     fontWeight: '500',
