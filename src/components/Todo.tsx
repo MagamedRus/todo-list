@@ -43,7 +43,7 @@ function Todo({ todo }: Props) {
   }, [filterState.id, hide, todo.isComplete]);
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, hide && styles.hide]}>
       <ReadButton onMark={onPressRead} isMarked={todo.isComplete} />
       <AboutTodo
         task={todo.task}
