@@ -36,9 +36,12 @@ const todosSlice = createSlice({
       return state;
     },
     addTodo(state, action: PayloadAction<newTodoPayload>) {
-      const newId = state.data[state.data.length - 1].id + 1;
+      const { data } = state;
+      const lastItemData = data[state.data.length - 1];
+      const lastItemId = lastItemData.id || -1;
+      const id = lastItemId + 1;
       const newTodo: TodoType = {
-        id: newId,
+        id: id,
         title: action.payload.title,
         task: action.payload.task,
         isComplete: false,
