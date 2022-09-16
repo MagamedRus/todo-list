@@ -31,10 +31,10 @@ function Todo({ todo }: Props) {
   useEffect(() => {
     switch (filterState.id) {
       case filterStates.SHOW_COMPLETED.id:
-        setHide(todo.isComplete);
+        setHide(!todo.isComplete);
         break;
       case filterStates.SHOW_UNCOMPLETED.id:
-        setHide(!todo.isComplete);
+        setHide(todo.isComplete);
         break;
       default:
         hide && setHide(false);
