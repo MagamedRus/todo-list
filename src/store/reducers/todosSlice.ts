@@ -6,7 +6,7 @@ import { SHOW_ALL } from '../../constants/filterState';
 
 interface TodosStore {
   filter: FilterType;
-  todos: TodosType;
+  data: TodosType;
 }
 
 const todos: TodosType = [
@@ -20,7 +20,7 @@ const todos: TodosType = [
 
 const initialState: TodosStore = {
   filter: SHOW_ALL,
-  todos: todos,
+  data: todos,
 };
 
 const todosSlice = createSlice({
@@ -28,19 +28,19 @@ const todosSlice = createSlice({
   initialState: initialState,
   reducers: {
     setTodos(state, action: PayloadAction<TodosType>) {
-      state.todos = action.payload;
+      state.data = action.payload;
       return state;
     },
     addTodo(state, action: PayloadAction<TodoType>) {
-      state.todos.push(action.payload);
+      state.data.push(action.payload);
       return state;
     },
     deleteTodo(state, action: PayloadAction<number>) {
-      state.todos = state.todos.filter(todo => todo.id !== action.payload);
+      state.data = state.data.filter(todo => todo.id !== action.payload);
       return state;
     },
     togleTodoComplete(state, action: PayloadAction<number>) {
-      state.todos = state.todos.map(todo =>
+      state.data = state.data.map(todo =>
         todo.id === action.payload
           ? { ...todo, isComplete: !todo.isComplete }
           : todo,
@@ -48,7 +48,7 @@ const todosSlice = createSlice({
     },
     changeFilter(state, action: PayloadAction<FilterType>) {
       state.filter = action.payload;
-      state.todos = getFilteredTodos(state.filter, state.todos);
+      state.data = getFilteredTodos(state.filter, state.data);
       return state;
     },
   },

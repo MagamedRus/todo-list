@@ -5,7 +5,7 @@ import HR from './HR';
 import Todo from './Todo';
 
 function Todos() {
-  const todos = useAppSelector(state => state.todos);
+  const todos = useAppSelector(state => state.todos.data);
 
   return (
     <>
