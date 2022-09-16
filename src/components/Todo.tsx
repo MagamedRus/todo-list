@@ -15,11 +15,12 @@ type Props = {
 function Todo({ todo }: Props) {
   const [isComplete, setIsComplite] = useState(todo.isComplete);
   const [isShow, setIsShow] = useState(true);
+  const [isDelete, setIsDelete] = useState(false); // Not better variant for realize it, but better for optimase app
   const filterState = useAppSelector(state => state.filter);
 
   const onPressDelete = () => {
     deleteTodo(todo.id);
-    setIsShow(prevState => !prevState);
+    setIsDelete(true);
   };
 
   const onPressRead = () => {
@@ -28,20 +29,24 @@ function Todo({ todo }: Props) {
   };
 
   useEffect(() => {
-    switch (filterState.id) {
-      case filterStates.SHOW_ALL.id:
-        !isShow && setIsShow(true);
-        break;
-      case filterStates.SHOW_COMPLETED.id:
-        setIsShow(todo.isComplete);
-        break;
-      case filterStates.SHOW_UNCOMPLETED.id:
-        setIsShow(!todo.isComplete);
-        break;
-      default:
-        break;
+    if (!isDelete) {
+      switch (filterState.id) {
+        case filterStates.SHOW_ALL.id:
+          !isShow && setIsShow(true);
+          break;
+        case filterStates.SHOW_COMPLETED.id:
+          setIsShow(todo.isComplete);
+          break;
+        case filterStates.SHOW_UNCOMPLETED.id:
+          setIsShow(!todo.isComplete);
+          break;
+        default:
+          break;
+      }
+    } else {
+      setIsShow(false);
     }
-  }, [filterState, isShow, todo.isComplete]);
+  }, [filterState, isDelete, isShow, todo.isComplete]);
 
   return (
     <View style={[isShow ? styles.container : styles.hide]}>
