@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { FilterType } from '../../types/filter';
 import { TodosType, TodoType } from '../../types/todo';
-import { getFilteredTodos } from '../../common/filters';
 import { SHOW_ALL } from '../../constants/filterState';
 
 interface TodosStore {
@@ -48,7 +47,6 @@ const todosSlice = createSlice({
     },
     changeFilter(state, action: PayloadAction<FilterType>) {
       state.filter = action.payload;
-      state.data = getFilteredTodos(state.filter, state.data);
       return state;
     },
   },
