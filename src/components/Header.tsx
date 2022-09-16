@@ -8,7 +8,7 @@ import TransparentBlueButton from './TransparentBlueButton';
 const Header = () => {
   const [showModal, setShowModal] = useState(false);
   const reverseShowModal = () => setShowModal(prevState => !prevState);
-  const filterState = useAppSelector(state => state.filter);
+  const filterState = useAppSelector(state => state.todos.filter);
 
   return (
     <View style={styles.container}>

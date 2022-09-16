@@ -4,8 +4,9 @@ import { TodoType } from '../types/todo';
 import AboutTodo from './AboutTodo';
 import DeleteButton from './DeleteButton';
 import ReadButton from './ReadButton';
-import { deleteTodo, updateTodo } from '../common/localStorage';
-import { useAppSelector } from '../hooks/redux';
+import { deleteTodoData, updateTodoData } from '../common/localStorage';
+import { useAppDispatch, useAppSelector } from '../hooks/redux';
+import { deleteTodo, togleTodoComplete } from '../store/reducers/todosSlice';
 import { filterStates } from '../constants/filterState';
 
 type Props = {
@@ -13,45 +14,42 @@ type Props = {
 };
 
 function Todo({ todo }: Props) {
-  const [isComplete, setIsComplite] = useState(todo.isComplete);
-  const [isShow, setIsShow] = useState(true);
-  const [isDelete, setIsDelete] = useState(false); // Not better variant for realize it, but better for optimase app
-  const filterState = useAppSelector(state => state.filter);
+  const dispatch = useAppDispatch();
+  const filterState = useAppSelector(state => state.todos.filter);
+  const [hide, setHide] = useState(false);
 
   const onPressDelete = () => {
-    deleteTodo(todo.id);
-    setIsDelete(true);
+    deleteTodoData(todo.id);
+    dispatch(deleteTodo(todo.id));
   };
 
   const onPressRead = () => {
-    updateTodo({ ...todo, isComplete: !todo.isComplete });
-    setIsComplite(prevState => !prevState);
+    updateTodoData({ ...todo, isComplete: !todo.isComplete });
+    dispatch(togleTodoComplete(todo.id));
   };
 
   useEffect(() => {
-    if (!isDelete) {
-      switch (filterState.id) {
-        case filterStates.SHOW_ALL.id:
-          !isShow && setIsShow(true);
-          break;
-        case filterStates.SHOW_COMPLETED.id:
-          setIsShow(todo.isComplete);
-          break;
-        case filterStates.SHOW_UNCOMPLETED.id:
-          setIsShow(!todo.isComplete);
-          break;
-        default:
-          break;
-      }
-    } else {
-      setIsShow(false);
+    switch (filterState.id) {
+      case filterStates.SHOW_COMPLETED.id:
+        setHide(!todo.isComplete);
+        break;
+      case filterStates.SHOW_UNCOMPLETED.id:
+        setHide(todo.isComplete);
+        break;
+      default:
+        hide && setHide(false);
+        break;
     }
-  }, [filterState, isDelete, isShow, todo.isComplete]);
+  }, [filterState.id, hide, todo.isComplete]);
 
   return (
-    <View style={[isShow ? styles.container : styles.hide]}>
-      <ReadButton onMark={onPressRead} isMarked={isComplete} />
-      <AboutTodo task={todo.task} title={todo.title} isComplete={isComplete} />
+    <View style={[styles.container, hide && styles.hide]}>
+      <ReadButton onMark={onPressRead} isMarked={todo.isComplete} />
+      <AboutTodo
+        task={todo.task}
+        title={todo.title}
+        isComplete={todo.isComplete}
+      />
       <DeleteButton onDelete={onPressDelete} />
     </View>
   );
