@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
-import { BackgroundColor, TextColor } from '../constants/colors';
+import { TextColor } from '../constants/colors';
 
 type Props = {
   onPress: { (): void };
@@ -20,12 +20,10 @@ export default FilterRow;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     height: 55,
-    backgroundColor: BackgroundColor.white,
   },
   innerText: {
     fontFamily: 'Inter',
