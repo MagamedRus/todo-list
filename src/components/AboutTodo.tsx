@@ -12,7 +12,7 @@ const AboutTodo = ({ task, title, isComplete }: Props) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{title}</Text>
-      <Text style={isComplete ? styles.completedTask : styles.task}>
+      <Text style={[styles.task, isComplete && styles.completedTask]}>
         {task}
       </Text>
     </View>
@@ -44,13 +44,9 @@ const styles = StyleSheet.create({
     fontSize: 13,
     lineHeight: 17,
     color: TextColor.darkBrown,
+    marginTop: 2,
   },
   completedTask: {
-    fontFamily: 'Inter-Regular',
-    fontStyle: 'normal',
-    fontWeight: '400',
-    fontSize: 13,
-    lineHeight: 17,
     color: TextColor.semiDarkGray,
     textDecorationLine: 'line-through',
   },
