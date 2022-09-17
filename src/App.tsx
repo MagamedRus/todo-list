@@ -21,7 +21,7 @@ const App = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar backgroundColor={BackgroundColor.white} />
+      <StatusBar backgroundColor={BackgroundColor.skyBlue} />
       <Header />
       <Todos />
       <ModalAddTaskWithButton />
