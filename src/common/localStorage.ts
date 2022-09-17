@@ -23,7 +23,7 @@ export const getTodosData = async (): Promise<TodosType> => {
 export const addTodoData = async (todo: newTodoPayload): Promise<TodoType> => {
   let todos = await getTodosData();
   const lastItemData = todos[todos.length - 1];
-  const lastItemId = lastItemData?.id || -1;
+  const lastItemId = lastItemData?.id > -1 ? lastItemData?.id : -1;
   const id = lastItemId + 1;
   const newTodo: TodoType = {
     id: id,
