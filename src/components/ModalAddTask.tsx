@@ -100,6 +100,6 @@ const styles = StyleSheet.create({
   },
   rightWhiteBorder: {
     borderRightColor: BackgroundColor.white,
-    borderWidth: 1,
+    borderRightWidth: 1,
   },
 });

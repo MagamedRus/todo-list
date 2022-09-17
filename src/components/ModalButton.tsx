@@ -9,8 +9,8 @@ type Props = {
   isLightText?: boolean;
 };
 
-const ModalButton = ({ onPress, innerText, isLightText }: Props) => (
-  <TouchableOpacity style={[styles.container]} onPress={onPress}>
+const ModalButton = ({ onPress, innerText, isLightText, style }: Props) => (
+  <TouchableOpacity style={[styles.container, style]} onPress={onPress}>
     <Text style={[styles.innerText, isLightText && styles.lightInnerText]}>
       {innerText}
     </Text>
