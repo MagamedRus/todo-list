@@ -30,6 +30,7 @@ const styles = StyleSheet.create({
   container: {
     minHeight: 24,
     maxHeight: ComponentHeights.todos,
+    paddingBottom: 36,
   },
   todos: {
     paddingHorizontal: 17,

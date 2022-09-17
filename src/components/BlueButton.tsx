@@ -24,7 +24,6 @@ const styles = StyleSheet.create({
     height: 55,
     backgroundColor: BackgroundColor.skyBlue,
     borderRadius: 8,
-    marginTop: 36,
   },
   innerText: {
     fontFamily: 'Inter',
