@@ -17,7 +17,8 @@ const ModalAddTask = ({ close, isShow }: Props) => {
   const [task, setTask] = useState('');
   const dispatch = useAppDispatch();
 
-  const addTask = () => title && task && dispatch(addTodo({ task, title }));
+  const addTask = () =>
+    title && task && dispatch(addTodo({ task, title })) && close();
 
   return (
     <Popup close={close} isShow={isShow}>
