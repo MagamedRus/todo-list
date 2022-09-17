@@ -64,6 +64,13 @@ const styles = StyleSheet.create({
     width: 270,
     height: 219,
     borderRadius: 14,
+
+    //shadow
+    shadowColor: 'black',
+    shadowOpacity: 0.26,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 10,
+    elevation: 3,
   },
 
   header: {
