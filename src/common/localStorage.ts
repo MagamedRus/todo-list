@@ -2,6 +2,11 @@ import AsyncStorage from '@react-native-community/async-storage';
 import { TODO_LIST_DATA } from '../constants/localStorage';
 import { TodosType, TodoType } from '../types/todo';
 
+type newTodoPayload = {
+  title: string;
+  task: string;
+};
+
 export const deleteTodoData = async (todoId: number): Promise<TodosType> => {
   let todos = await getTodosData();
   todos.splice(todoId, 1); // removing item
@@ -15,10 +20,21 @@ export const getTodosData = async (): Promise<TodosType> => {
   return todos;
 };
 
-export const addTodoData = async (todo: TodoType): Promise<void> => {
+export const addTodoData = async (todo: newTodoPayload): Promise<TodoType> => {
   let todos = await getTodosData();
-  todos.push(todo);
+  const lastItemData = todos[todos.length - 1];
+  const lastItemId = lastItemData?.id || -1;
+  const id = lastItemId + 1;
+  const newTodo: TodoType = {
+    id: id,
+    title: todo.title,
+    task: todo.task,
+    isComplete: false,
+  };
+  todos.push(newTodo);
   setTodosData(todos);
+
+  return newTodo;
 };
 
 export const updateTodoData = async (todo: TodoType): Promise<void> => {

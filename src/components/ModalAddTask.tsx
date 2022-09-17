@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { addTodoData } from '../common/localStorage';
 import { BackgroundColor, TextColor } from '../constants/colors';
 import { useAppDispatch } from '../hooks/redux';
 import { addTodo } from '../store/reducers/todosSlice';
@@ -17,8 +18,13 @@ const ModalAddTask = ({ close, isShow }: Props) => {
   const [task, setTask] = useState('');
   const dispatch = useAppDispatch();
 
-  const addTask = () =>
-    title && task && dispatch(addTodo({ task, title })) && close();
+  const addTask = async () => {
+    if (title && task) {
+      const newTodo = await addTodoData({ task, title });
+      dispatch(addTodo(newTodo));
+      close();
+    }
+  };
 
   return (
     <Popup close={close} isShow={isShow}>
