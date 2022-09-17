@@ -7,7 +7,8 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "react-native-asset"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "setAssets": "react-native-asset"
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.12.1",
