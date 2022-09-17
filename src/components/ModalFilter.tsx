@@ -5,6 +5,7 @@ import Popup from './Popup';
 import { FilterType } from '../types/filter';
 import { filterStates } from '../constants/filterState';
 import { useAppDispatch } from '../hooks/redux';
+import { BackgroundColor } from '../constants/colors';
 import { changeFilter } from '../store/reducers/todosSlice';
 
 type Props = {
@@ -51,7 +52,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     height: 167,
     width: 359,
-    backgroundColor: 'rgba(249, 249, 249, 0.94)',
+    backgroundColor: BackgroundColor.lightBackground,
     borderRadius: 14,
   },
 });

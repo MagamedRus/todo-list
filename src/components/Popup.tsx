@@ -1,5 +1,12 @@
 import React, { useEffect } from 'react';
-import { Modal, StatusBar, StyleSheet, TouchableOpacity } from 'react-native';
+import {
+  Modal,
+  StatusBar,
+  StyleSheet,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+} from 'react-native';
+import { BackgroundColor } from '../constants/colors';
 
 type Props = {
   children: JSX.Element;
@@ -10,8 +17,8 @@ type Props = {
 const Popup = ({ close, children, isShow }: Props) => {
   useEffect(() => {
     isShow
-      ? StatusBar.setBackgroundColor('rgba(0, 0, 0, .3)')
-      : StatusBar.setBackgroundColor('white');
+      ? StatusBar.setBackgroundColor(BackgroundColor.modalShadow)
+      : StatusBar.setBackgroundColor(BackgroundColor.white);
   }, [isShow]);
 
   return (
@@ -19,10 +26,12 @@ const Popup = ({ close, children, isShow }: Props) => {
       visible={isShow}
       animationType="fade"
       transparent={true}
-      onTouchCancel={close}
       onRequestClose={close}>
-      <TouchableOpacity onPress={close} style={styles.container}>
-        {children}
+      <TouchableOpacity
+        activeOpacity={1}
+        onPressOut={close}
+        style={styles.container}>
+        <TouchableWithoutFeedback>{children}</TouchableWithoutFeedback>
       </TouchableOpacity>
     </Modal>
   );
@@ -35,6 +44,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(0, 0, 0, .3)',
+    backgroundColor: BackgroundColor.modalShadow,
+    opacity: 1,
   },
 });

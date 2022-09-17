@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { BackgroundColor, TextColor } from '../constants/colors';
 
 type Props = {
   onPress: { (): void };
@@ -23,7 +24,7 @@ const styles = StyleSheet.create({
     width: '100%',
     borderRadius: 8,
     borderWidth: 2,
-    borderColor: '#3785CC',
+    borderColor: BackgroundColor.skyBlue,
   },
   innerText: {
     fontFamily: 'Inter',
@@ -31,6 +32,6 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     fontSize: 14,
     lineHeight: 18,
-    color: '#3785CC',
+    color: TextColor.skyBlue,
   },
 });

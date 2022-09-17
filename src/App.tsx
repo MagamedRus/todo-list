@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { SafeAreaView, StatusBar } from 'react-native';
 import Header from './components/Header';
+import ModalAddTaskWithButton from './components/ModalAddTaskWithButton';
 import Todos from './components/Todos';
 import { getTodosData } from './common/localStorage';
 import { useAppDispatch } from './hooks/redux';
@@ -22,6 +23,7 @@ const App = () => {
       <StatusBar backgroundColor={'transparent'} />
       <Header />
       <Todos />
+      <ModalAddTaskWithButton />
     </SafeAreaView>
   );
 };
