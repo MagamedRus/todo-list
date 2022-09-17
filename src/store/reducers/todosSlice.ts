@@ -15,6 +15,7 @@ type newTodoPayload = {
   task: string;
 };
 
+
 const initialState: TodosStore = {
   filter: SHOW_ALL,
   data: todos,
@@ -39,8 +40,8 @@ const todosSlice = createSlice({
         task: action.payload.task,
         isComplete: false,
       };
-
       state.data.push(newTodo);
+
       return state;
     },
     deleteTodo(state, action: PayloadAction<number>) {
