@@ -1,9 +1,8 @@
 import React from 'react';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text } from 'react-native';
 import { TextColor } from '../constants/colors';
 import { ComponentHeights } from '../constants/sizes';
 import { useAppSelector } from '../hooks/redux';
-import HR from './HR';
 import Todo from './Todo';
 
 function Todos() {
@@ -12,14 +11,9 @@ function Todos() {
   return (
     <ScrollView style={styles.container} alwaysBounceVertical={true}>
       {todos.map((todo, index) => (
-        <View key={String(todo.id)} style={styles.todos}>
-          {index !== 0 && <HR />}
-          <Todo todo={todo} />
-        </View>
+        <Todo key={String(todo.id)} todo={todo} isBorder={index !== 0} />
       ))}
-      {!todos[0] && (
-        <Text style={styles.emptyText}>Список заданий пуст...</Text>
-      )}
+      {!todos[0] && <Text style={styles.emptyText}>Список задач пуст...</Text>}
     </ScrollView>
   );
 }
@@ -31,9 +25,6 @@ const styles = StyleSheet.create({
     minHeight: 24,
     maxHeight: ComponentHeights.todos,
     paddingBottom: 36,
-  },
-  todos: {
-    paddingHorizontal: 17,
   },
   emptyText: {
     textAlignVertical: 'center',

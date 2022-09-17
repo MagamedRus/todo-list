@@ -8,12 +8,14 @@ import { deleteTodoData, updateTodoData } from '../common/localStorage';
 import { useAppDispatch, useAppSelector } from '../hooks/redux';
 import { deleteTodo, togleTodoComplete } from '../store/reducers/todosSlice';
 import { filterStates } from '../constants/filterState';
+import { BackgroundColor } from '../constants/colors';
 
 type Props = {
   todo: TodoType;
+  isBorder: boolean;
 };
 
-function Todo({ todo }: Props) {
+function Todo({ todo, isBorder }: Props) {
   const dispatch = useAppDispatch();
   const filterState = useAppSelector(state => state.todos.filter);
   const [hide, setHide] = useState(false);
@@ -42,8 +44,14 @@ function Todo({ todo }: Props) {
     }
   }, [filterState.id, hide, todo.isComplete]);
 
+  const containerStyles = [
+    styles.container,
+    hide && styles.hide,
+    isBorder && styles.borderBottom,
+  ];
+
   return (
-    <View style={[styles.container, hide && styles.hide]}>
+    <View style={containerStyles}>
       <ReadButton onMark={onPressRead} isMarked={todo.isComplete} />
       <AboutTodo
         task={todo.task}
@@ -63,7 +71,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingVertical: 10,
+    paddingHorizontal: 17,
     flexDirection: 'row',
+  },
+  borderBottom: {
+    borderBottomWidth: 1,
+    borderBottomColor: BackgroundColor.ghostWhite,
   },
   hide: {
     display: 'none',
