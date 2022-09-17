@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 16,
   },
   title: {
-    fontFamily: 'Inter',
+    fontFamily: 'Inter-Medium',
     fontStyle: 'normal',
     textAlign: 'center',
     color: TextColor.darkBrown,
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     lineHeight: 22,
   },
   underTitle: {
-    fontFamily: 'Inter',
+    fontFamily: 'Inter-Regular',
     fontStyle: 'normal',
     textAlign: 'center',
     color: TextColor.semiGray,

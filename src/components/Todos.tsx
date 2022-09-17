@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
   emptyText: {
     textAlignVertical: 'center',
     textAlign: 'center',
-    fontFamily: 'Inter',
+    fontFamily: 'Inter-Medium',
     fontStyle: 'normal',
     fontWeight: '500',
     fontSize: 17,

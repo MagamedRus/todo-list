@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     paddingVertical: 7,
     borderWidth: 1,
 
-    fontFamily: 'Inter',
+    fontFamily: 'Inter-Regular',
     fontStyle: 'normal',
     fontWeight: '400',
     lineHeight: 18,

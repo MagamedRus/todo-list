@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     height: 55,
   },
   innerText: {
-    fontFamily: 'Inter',
+    fontFamily: 'Inter-Regular',
     fontStyle: 'normal',
     lineHeight: 18,
     fontSize: 16,

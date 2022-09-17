@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   title: {
-    fontFamily: 'Inter',
+    fontFamily: 'Inter-Medium',
     fontStyle: 'normal',
     fontWeight: '500',
     fontSize: 17,
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     color: TextColor.darkBrown,
   },
   task: {
-    fontFamily: 'Inter',
+    fontFamily: 'Inter-Regular',
     fontStyle: 'normal',
     fontWeight: '400',
     fontSize: 13,
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     color: TextColor.darkBrown,
   },
   completedTask: {
-    fontFamily: 'Inter',
+    fontFamily: 'Inter-Regular',
     fontStyle: 'normal',
     fontWeight: '400',
     fontSize: 13,

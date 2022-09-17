@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
   },
   innerText: {
-    fontFamily: 'Inter',
+    fontFamily: 'Inter-Medium',
     fontStyle: 'normal',
     textAlign: 'center',
     fontSize: 17,

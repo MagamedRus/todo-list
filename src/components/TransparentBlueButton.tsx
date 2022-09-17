@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     borderColor: BackgroundColor.skyBlue,
   },
   innerText: {
-    fontFamily: 'Inter',
+    fontFamily: 'Inter-Medium',
     fontStyle: 'normal',
     fontWeight: '500',
     fontSize: 14,
