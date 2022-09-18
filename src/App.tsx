@@ -34,5 +34,6 @@ export default App;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: BackgroundColor.white,
+    flex: 1,
   },
 });
