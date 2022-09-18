@@ -53,5 +53,6 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     lineHeight: 18,
     letterSpacing: -0.078,
+    color: TextColor.darkBrown,
   },
 });
